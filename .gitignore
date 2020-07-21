@@ -1,1 +1,9 @@
 .env
+
+# postgres
+*.sql
+pgdata
+
+# mongo
+mongodb
+

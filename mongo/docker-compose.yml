@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  mongodb-primary:
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=mongodb
+      - MONGO_INITDB_ROOT_USERNAME=ngademin
+      - MONGO_INITDB_ROOT_PASSWORD=changemesecret
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb:/var/lib/postgresql/data
+      
+volumes:
+  mongodb:
+
