@@ -4,13 +4,15 @@ services:
         postgressql:
          image: postgres
          container_name: postgressql
-         env_file:
-          - .env
+         environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=changeme
+          - POSTGRES_DB=postgres
          ports:
           - 5432:5432
          volumes:
           - ./pgdata:/var/lib/postgresql/data
-          - ./annahekka.sql:/docker-entrypoint-initdb.d/annahekka.sql
+          
 volumes:
         pgdata:
 
