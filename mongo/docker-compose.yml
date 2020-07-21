@@ -2,6 +2,7 @@ version: '3.7'
 services:
   mongodb-primary:
     image: mongo
+    container_name: mongodb
     environment:
       - MONGO_INITDB_DATABASE=mongodb
       - MONGO_INITDB_ROOT_USERNAME=mongo
