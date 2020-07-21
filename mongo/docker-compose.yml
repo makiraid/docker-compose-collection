@@ -4,13 +4,13 @@ services:
     image: mongo
     environment:
       - MONGO_INITDB_DATABASE=mongodb
-      - MONGO_INITDB_ROOT_USERNAME=ngademin
-      - MONGO_INITDB_ROOT_PASSWORD=changemesecret
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=changeme
     ports:
       - 27017:27017
     volumes:
-      - ./mongodb:/var/lib/postgresql/data
+      - ./mongo-data:/var/lib/mongo-data/data
       
 volumes:
-  mongodb:
+  mongo-data:
 
