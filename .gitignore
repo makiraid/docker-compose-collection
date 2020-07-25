@@ -5,5 +5,8 @@
 pgdata
 
 # mongo
-mongodb
+mongo-data
+
+# kafka
+kafka-data
 
