@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+    jenkins:
+        container_name: jenkins
+        user: root
+        image: jenkins/jenkins:alpine
+        volumes: 
+            - './jenkins:/var/jenkins_home'
+        ports: 
+            - '8080:8080'
+            - '50000:50000'
+
+volumes: 
+    jenkins:
