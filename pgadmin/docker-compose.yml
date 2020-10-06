@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: '${PGADMIN_DEFAULT_EMAIL:-mail@domain.com}'
+      PGADMIN_DEFAULT_PASSWORD: '${PGADMIN_DEFAULT_PASSWORD:-changeme}'
+      PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: '${PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION:-True}'
+      PGADMIN_CONFIG_LOGIN_BANNER: '${PGADMIN_CONFIG_LOGIN_BANNER:-Authorised users only!}'
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: '${PGADMIN_CONFIG_CONSOLE_LOG_LEVEL:-10}'
+    volumes:
+      - 'pgadmin:/root/.pgadmin'
+    ports:
+      - '${PGADMIN_PORT:-5050}:80'
+    restart: unless-stopped
+
+volumes:
+  pgadmin:
+
