@@ -10,7 +10,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./mongo-data:/var/lib/mongo-data/data
+      - ./mongo-data:/data/db
       
 volumes:
   mongo-data:
