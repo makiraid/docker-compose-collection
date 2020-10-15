@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'yourhost.com'
+    links:
+      - postgresql:postgresql
+      - redis:redis
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        postgresql['enable'] = false
+        gitlab_rails['db_username'] = "gitlab"
+        gitlab_rails['db_password'] = "gitlab"
+        gitlab_rails['db_host'] = "postgresql"
+        gitlab_rails['db_port'] = "5432"
+        gitlab_rails['db_database'] = "gitlabhq_production"
+        gitlab_rails['db_adapter'] = 'postgresql'
+        gitlab_rails['db_encoding'] = 'utf8'
+        redis['enable'] = false
+        gitlab_rails['redis_host'] = 'redis'
+        gitlab_rails['redis_port'] = '6379'
+        external_url 'https://yourhost.com:8987'
+        gitlab_rails['gitlab_shell_ssh_port'] = 30022
+    ports:
+      - "30080:80"
+      - "8987:443"
+      - "30022:22"
+  postgresql:
+    restart: always
+    image: postgres:9.6.2-alpine
+    environment:
+      - POSTGRES_USER=gitlab
+      - POSTGRES_PASSWORD=gitlab
+      - POSTGRES_DB=gitlabhq_production
+  # the following are hints on what volumes to mount if you want to persist data
+  #  volumes:
+  #    - data/postgresql:/var/lib/postgresql:rw
+
+  redis:
+    restart: always
+    image: redis:3.0.7-alpine
