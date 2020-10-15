@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-CU19-ubuntu-16.04
+    container_name: mssql
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${MSSQL_DB_PASSWORD}
+    volumes:
+      - "mssqlsystem:/var/opt/mssql"
+    restart: unless-stopped
+
+volumes:
+  mssqlsystem:
+    external: true
