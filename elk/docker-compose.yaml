@@ -11,7 +11,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./data/es1:/usr/share/elasticsearch/data
+      - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     networks:
@@ -28,7 +28,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./data/es2:/usr/share/elasticsearch/data
+      - esdata2:/usr/share/elasticsearch/data
     networks:
       - dev
     depends_on:
@@ -46,7 +46,7 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:6.5.4
     volumes:
-      - ./deployments/elk/logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
     ports:
       - "5000:5000"
       - "9600:9600"
@@ -56,6 +56,10 @@ services:
       - dev
     depends_on:
       - elasticsearch
+      - elasticsearch2
+volumes:
+  esdata1:
+  esdata2:
 networks:
   dev:
     driver: bridge
