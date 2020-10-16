@@ -1,0 +1,17 @@
+version: "3"
+services:
+  reverse-proxy:
+    image: traefik # The official Traefik docker image
+    command: --api --docker # Enables the web UI and tells Traefik to listen to docker
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+      - $PWD/traefik.toml:/traefik.toml
+
+networks:
+  default:
+    external:
+      name: traefik-default  #your custom network, you can see in "docker network ls"
