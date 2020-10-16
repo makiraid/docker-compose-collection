@@ -81,6 +81,12 @@ A `docker-compose.yml` looks like this:
          - .:/code
 
 
+## Contributing
+
+Pull requests are welcome.
+
+See the [guidelines](CONTRIBUTING.md) for contributing to this project.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
