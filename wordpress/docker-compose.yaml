@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  wp_syafie_id:
+  wp_sample_id:
     image: wordpress
     environment:
       WORDPRESS_DB_HOST: db_host
