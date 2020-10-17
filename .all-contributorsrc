@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "haffjjj",
+      "name": "Jon",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/20922033?v=4",
+      "profile": "http://linkedin.com/in/haffjjj",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "dockers",
+  "projectOwner": "kirahxr",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
