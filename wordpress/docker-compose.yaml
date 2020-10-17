@@ -24,3 +24,10 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - $PWD/mysql-data:/var/lib/mysql
+    labels:
+      - traefik.enable=false
+
+networks:
+  default:
+    external:
+      name: traefik_default #your custom network, you can see in "docker network ls"
