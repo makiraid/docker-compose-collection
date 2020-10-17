@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  wp_syafie_id:
+    image: wordpress
+    environment:
+      WORDPRESS_DB_HOST: db_host
+      WORDPRESS_DB_USER: db_user
+      WORDPRESS_DB_PASSWORD: db_password
+      WORDPRESS_DB_NAME: db_name
+    labels:
+      - traefik.backend=wp_syafie_id
+      - traefik.frontend.rule=Host:your_host.id #example: syafie.id
+      - traefik.port=80
+    depends_on:
+      - db_host
+
+  db_host:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - $PWD/mysql-data:/var/lib/mysql
