@@ -1,7 +1,4 @@
 # Docker
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and deploy it as one package.
 
@@ -71,7 +68,7 @@ reproduced anywhere.
 they can be run together in an isolated environment.
 3. Lastly, run `docker-compose up` and Compose will start and run your entire app.
 
-A `docker-compose.yml` looks like this:
+`docker-compose.yml` looks like this:
 
     version: '3'
 
@@ -89,32 +86,3 @@ A `docker-compose.yml` looks like this:
 Pull requests are welcome.
 
 See the [guidelines](CONTRIBUTING.md) for contributing to this project.
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://makira.id"><img src="https://avatars3.githubusercontent.com/u/33960326?v=4" width="100px;" alt=""/><br /><sub><b>Risky Makira</b></sub></a><br /><a href="https://github.com/kirahxr/dockers/commits?author=kirahxr" title="Code">💻</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<table border="0">
-  <tr>
-    <td align="center">
-      <a href="https://github.com/mohammadalviyan">
-        <img width="110" src="https://avatars1.githubusercontent.com/mohammadalviyan" alt="Mohammad Alviyan Anwari"><br/>
-          <sub><b>Alviyan</b></sub>
-      </a>
-    </td>
-  </tr>
-</table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
