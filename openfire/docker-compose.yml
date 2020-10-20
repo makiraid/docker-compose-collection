@@ -1,0 +1,16 @@
+version: '3'
+services:
+  openfire:
+    image: sameersbn/openfire:3.10.3-19
+    ports:
+      - 9090:9090
+      - 5222:5222
+      - 7777:7777
+    container_name: openfire
+    volumes:
+      - $PWD/data/openfire:/var/lib/openfire
+    networks:
+      back-tier:
+
+networks:
+  back-tier:

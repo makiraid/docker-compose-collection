@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  rethinkdb:
+    image: rethinkdb:latest
+    volumes:
+      - "./data/rethink:/data"
+    command: rethinkdb --bind all -d /data --no-update-check
+    ports:
+      - "8080:8080"
+      - "29015:29015"
+      - "28015:28015"
