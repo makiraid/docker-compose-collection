@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  ocr-tesseract:
+    image: kirahxr/ocr-python:1.0.1
+    ports:
+      - "3000:3000"

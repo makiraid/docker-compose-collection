@@ -1,12 +1,12 @@
+# environment
 .env
 
-# postgres
+# volumes
 *.sql
 pgdata
-
-# mongo
 mongo-data
-
-# kafka
 kafka-data
+
+# IDE
+.idea
 
