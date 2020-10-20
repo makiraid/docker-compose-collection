@@ -1,0 +1,9 @@
+version: "3"
+services:
+  datascience-notebook:
+      image: jupyter/datascience-notebook
+      volumes:
+        - /Absolute/Path/To/Where/Your/Notebook/Files/Will/Be/Saved:/home/yourname/work
+      ports:
+        - 8888:8888
+      container_name: datascience-notebook-container
