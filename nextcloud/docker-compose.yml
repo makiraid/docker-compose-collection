@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=1234
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DATABASE=nextcloud_db
+
+volumes:
+  nextcloud:
+  db:
