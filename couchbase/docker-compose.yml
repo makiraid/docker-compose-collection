@@ -1,0 +1,9 @@
+version: '3'
+services:
+  couchbase:
+    container_name: couchbase
+    image: couchbase:community
+    restart: on-failure
+    ports:
+      - '8091-8094:8091-8094'
+      - '11210:11210'
