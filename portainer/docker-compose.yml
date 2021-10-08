@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  couchbase:
+  portainer:
     container_name: portainer
     image: portainer/portainer-ce
     restart: always
-    volume:
+    volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
