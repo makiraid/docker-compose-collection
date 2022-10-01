@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+    athens:
+        volumes:
+            - $PWD/$ATHENS_STORAGE:/var/lib/athens
+            - $PWD/.gitconfig:/root/.gitconfig
+            - $PWD/ssh-keys:/root/.ssh
+        environment:
+            - ATHENS_DISK_STORAGE_ROOT=/var/lib/athens
+            - ATHENS_STORAGE_TYPE=disk
+        container_name: athens-proxy
+        ports:
+            - 3000:3000
+        image: athens:latest
