@@ -1,0 +1,89 @@
+version: "3.8"
+
+services:
+  geth:
+    image: ethereum/client-go
+    pull_policy: always
+    container_name: geth
+    restart: unless-stopped
+    ports:
+      - target: 8546
+        host_ip: 127.0.0.1
+        published: 8546
+        protocol: tcp
+        mode: host
+      - target: 8545
+        host_ip: 127.0.0.1
+        published: 8545
+        protocol: tcp
+        mode: host
+      - target: 8551
+        host_ip: 127.0.0.1
+        published: 8551
+        protocol: tcp
+        mode: host
+      - target: 30303
+        host_ip: 0.0.0.0
+        published: 30303
+        mode: host
+    volumes:
+      - ${GETH_DATADIR:-/data/geth}:/root/.ethereum
+    stop_signal: SIGINT
+    stop_grace_period: 2m
+    healthcheck:
+      test: ["CMD-SHELL", "geth attach --exec eth.blockNumber"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command:
+      - --http
+      - --ws
+      - --authrpc.jwtsecret=/root/.ethereum/jwt.hex
+      - --txlookuplimit=0
+    logging:
+      driver: json-file
+      options:
+        max-size: 2m
+        max-file: 10
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain
+    pull_policy: always
+    container_name: beacon
+    restart: unless-stopped
+    stop_grace_period: 2m
+    volumes:
+      - ${PRYSM_DATADIR:-/data/prysm}:/data
+      - ${GETH_DATADIR:-/data/geth}:/geth
+    depends_on:
+      geth:
+        condition: service_healthy
+    ports:
+      - target: 3500
+        host_ip: 127.0.0.1
+        published: 3500
+        protocol: tcp
+        mode: host
+      - target: 4000
+        host_ip: 127.0.0.1
+        published: 4000
+        protocol: tcp
+        mode: host
+      - target: 13000
+        host_ip: 0.0.0.0
+        published: 13000
+        mode: host
+      - target: 12000
+        host_ip: 0.0.0.0
+        published: 12000
+        mode: host
+    command:
+      - --accept-terms-of-use
+      - --datadir=/data
+      - --disable-monitoring
+      - --execution-endpoint=http://geth:8551
+      - --jwt-secret=/geth/jwt.hex
+    logging:
+      driver: json-file
+      options:
+        max-size: 2m
+        max-file: 10
