@@ -1,0 +1,11 @@
+version: "3"
+services:
+  nodejs:
+    container_name: node
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
